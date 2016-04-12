@@ -1,0 +1,6 @@
+#ifndef __ADD_IDL__
+#define __ADD_IDL__
+interface int_Add {
+	long add(in long a1,in long a2);
+};
+#endif  // __Add_IDL__
