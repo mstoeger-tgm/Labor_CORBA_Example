@@ -1,6 +1,16 @@
+/*
+ * Server Beispiel fuer CORBA Labor
+ * Addiert 2 Zahlen und liefert das Ergebnis zurueck
+ * Autor: Michael Stoeger
+ * Version: 13.4.2016
+ * Vorlage: HalloWelt
+ */
 #include <iostream>
 #include "add.hh"
 using namespace std;
+/*
+ * Methode aus HalloWelt Beispiel
+ */
 static CORBA::Boolean
 bindObjectToName(CORBA::ORB_ptr orb, CORBA::Object_ptr objref)
 {
@@ -97,13 +107,21 @@ bindObjectToName(CORBA::ORB_ptr orb, CORBA::Object_ptr objref)
   }
   return 1;
 }
+/*
+ * Implementierung des Add Objekts
+ */
 class Add : public POA_int_Add{
 public:
 	virtual ::CORBA::Long add(::CORBA::Long a1,::CORBA::Long a2);
 };
+//Add Methode
 ::CORBA::Long Add::add(::CORBA::Long a1,::CORBA::Long a2){
+	cout << "add() called!" << endl;
 	return a1+a2;
 }
+/*
+ * Vorlage: HalloWelt->main
+ */
 int main(int argc, char **argv){
 try {
     CORBA::ORB_var orb = CORBA::ORB_init(argc, argv);
